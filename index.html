@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Loan Calculator</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <header class="">
+        <nav class="navbar navbar-expand-lg navbar-transparent container">
+            <a class="navbar-brand" href="index.html">Loan Calculator</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home Loan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="personal-loan.html">Personal Loan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="car-loan.html">Car Loan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="calculator-section">
+        <div class="container p-3 p-md-5">
+
+            <h1 class="main-banner-title">Home Loan Calculator</h1>
+            <form id="loan-form" class="row g-3 justify-content-center mt-3 mt-md-5">
+                <!-- Loan Amount and Interest Rate in a Row -->
+                <div class="col-md-4 text-start">
+                    <label for="loan-amount" class="form-label text-start">Loan Amount:</label>
+                    <input type="number" id="loan-amount" class="form-control" placeholder="Enter loan amount" required>
+                </div>
+                <div class="col-md-4 text-start">
+                    <label for="interest-rate" class="form-label">Interest Rate (%):</label>
+                    <input type="number" id="interest-rate" class="form-control" placeholder="Enter interest rate"
+                        required>
+                </div>
+
+                <!-- Loan Term and a New Row for Submit Button -->
+                <div class="col-md-4 text-start">
+                    <label for="loan-term" class="form-label">Loan Term (Years):</label>
+                    <input type="number" id="loan-term" class="form-control" placeholder="Enter loan term" required>
+                </div>
+
+                <div class="col-md-4 d-flex align-items-end justify-content-center">
+                    <button type="submit" class="btn btn-primary w-100 calculate-btn">Calculate</button>
+                </div>
+                <hr>
+                <h4 class="m-0 fs-5">Choose Your Loan Type</h4>
+                <p class="m-0 mt-2 mt-md-0 fs-6">Click below to learn more and apply for the loan that fits your needs.
+                </p>
+                <div class="col-12 d-flex flex-wrap align-items-center justify-content-center mt-2 mt-md-4">
+                    <a href="index.html" class="btn btn-primary btn-lg mx-2 mt-2 mt-ms-0">Home Loan</a>
+                    <a href="personal-loan.html" class="btn btn-success btn-lg mx-2 mt-2 mt-ms-0">Personal Loan</a>
+                    <a href="car-loan.html" class="btn btn-danger btn-lg mx-2 mt-2 mt-ms-0">Car Loan</a>
+                </div>
+            </form>
+
+            <div id="result" style="display: none;">
+                <h3>Loan EMI: ₹<span id="emi">0</span></h3>
+                <p>Loan Amount: ₹<span id="amount"></span></p>
+                <p>Interest Rate: <span id="rate"></span>%</p>
+                <p>Loan Term: <span id="term"></span> years</p>
+                <div class="container">
+
+                    <canvas id="loan-chart"></canvas>
+                </div>
+
+                <!-- Print and Share Buttons -->
+                <button id="print-btn">Print</button>
+                <button id="share-btn">Share</button>
+            </div>
+        </div>
+    </section>
+    <section class="calculator-section text-start">
+        <div class="container p-3 p-md-5">
+            <div class="row">
+                <div class="col-md-12 main-content">
+                    <h4 class="mb-md-3">1. Introduction to Home Loans</h4>
+                    <p>A home loan is a financial product that enables individuals or families to purchase real estate
+                        without paying the full price upfront. The loan is typically secured by the property itself,
+                        meaning the lender can claim the property if the borrower defaults on the loan. Home loans are
+                        essential for many people to fulfill their dream of homeownership, and understanding the
+                        intricacies of home loans can help borrowers make informed decisions regarding the right type of
+                        loan for their needs.</p>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">2. Types of Home Loans</h4>
+                    <p>There are various types of home loans available, each suited for different purposes and borrower
+                        needs. Here’s a breakdown of the most common types:</p>
+                    <ul>
+                        <li><strong>Fixed-Rate Home Loan</strong>: A fixed-rate home loan has a constant interest rate
+                            throughout the loan tenure, ensuring that the EMI (Equated Monthly Installment) remains the
+                            same for the duration of the loan.</li>
+                        <li><strong>Floating-Rate Home Loan</strong>: A floating-rate loan has an interest rate that may
+                            change over time based on market conditions. This type of loan offers more flexibility but
+                            carries the risk of fluctuating monthly payments.</li>
+                        <li><strong>Home Equity Loan</strong>: This type of loan allows homeowners to borrow against the
+                            equity they have in their home, typically for purposes such as home renovations, education,
+                            or debt consolidation.</li>
+                        <li><strong>Home Improvement Loan</strong>: A home improvement loan is designed to help
+                            homeowners finance renovations, repairs, or enhancements to their existing property.</li>
+                        <li><strong>Bridge Loan</strong>: A bridge loan is a short-term loan used to bridge the gap
+                            between buying a new home and selling the old one. It is usually repaid quickly after the
+                            old property is sold.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">3. Eligibility Criteria for Home Loans</h4>
+                    <p>Before applying for a home loan, you must meet certain eligibility criteria set by lenders. These
+                        criteria vary between lenders but generally include:</p>
+                    <ul>
+                        <li><strong>Age</strong>: Borrowers must typically be between 18 and 70 years old.</li>
+                        <li><strong>Income</strong>: Lenders assess your income to determine your repayment capacity. A
+                            steady income from a reputable source increases your chances of loan approval.</li>
+                        <li><strong>Credit Score</strong>: A good credit score (usually above 750) is essential for
+                            securing favorable interest rates. Lenders use your credit history to evaluate your ability
+                            to repay the loan.</li>
+                        <li><strong>Employment Status</strong>: Lenders prefer borrowers who have a stable job or
+                            business for a certain period, typically 2-3 years.</li>
+                        <li><strong>Property Type</strong>: The property you intend to purchase must meet the lender's
+                            requirements. Most lenders prefer properties in good condition in safe neighborhoods.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">4. Documents Required for Home Loan Application</h4>
+                    <p>The documentation required for home loan applications may vary depending on the lender, but here
+                        is a general list of documents you will need:</p>
+                    <ul>
+                        <li><strong>Proof of Identity</strong>: Passport, Aadhar card, voter ID, or driver’s license.
+                        </li>
+                        <li><strong>Proof of Address</strong>: Utility bills, rent agreements, or government-issued
+                            documents.</li>
+                        <li><strong>Income Proof</strong>: Pay stubs, tax returns, or bank statements for the last 3-6
+                            months.</li>
+                        <li><strong>Property Documents</strong>: Title deed, sale agreement, or other documents proving
+                            the ownership of the property you intend to purchase.</li>
+                        <li><strong>Credit Report</strong>: A copy of your credit score report.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">5. The Home Loan Application Process</h4>
+                    <p>The home loan application process typically involves the following steps:</p>
+                    <ol>
+                        <li><strong>Research and Compare</strong>: Start by researching different lenders and comparing
+                            home loan offers. Look at interest rates, processing fees, and other terms.</li>
+                        <li><strong>Fill Out the Application Form</strong>: Submit the necessary documents along with
+                            the completed home loan application form.</li>
+                        <li><strong>Verification</strong>: The lender will verify your documents and assess your
+                            eligibility. This may involve checking your credit score, income, and property details.</li>
+                        <li><strong>Sanctioning the Loan</strong>: Once your application is approved, the lender will
+                            sanction the loan and offer you the terms of the loan, including the amount, interest rate,
+                            and repayment schedule.</li>
+                        <li><strong>Disbursement</strong>: After the agreement is signed, the loan amount is disbursed
+                            to your account or directly to the seller of the property.</li>
+                    </ol>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">6. Understanding EMI (Equated Monthly Installment)</h4>
+                    <p>The EMI is the fixed monthly payment that a borrower must make to the lender. It consists of two
+                        parts: principal and interest. The formula for calculating EMI is based on the loan amount,
+                        interest rate, and loan tenure. Borrowers can use EMI calculators available online to estimate
+                        their monthly payments before committing to a home loan.</p>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">7. Factors That Affect Home Loan Interest Rates</h4>
+                    <p>Several factors affect the interest rate on a home loan. Here are some key considerations:</p>
+                    <ul>
+                        <li><strong>Credit Score</strong>: A higher credit score typically results in lower interest
+                            rates, as it signals to lenders that you are a low-risk borrower.</li>
+                        <li><strong>Loan Amount</strong>: Larger loan amounts may result in higher interest rates,
+                            depending on the lender's policy.</li>
+                        <li><strong>Loan Tenure</strong>: Shorter loan tenures usually come with lower interest rates,
+                            as the lender's risk is reduced.</li>
+                        <li><strong>Economic Conditions</strong>: Interest rates are often influenced by the broader
+                            economic environment, including inflation, central bank rates, and market competition.</li>
+                        <li><strong>Relationship with the Bank</strong>: Having a longstanding relationship with a bank
+                            or lender may result in lower rates or more favorable terms.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">8. Repayment of Home Loans</h4>
+                    <p>Repayment of a home loan occurs in the form of regular EMIs. The repayment schedule is typically
+                        structured so that a larger portion of the EMI goes towards interest payments in the initial
+                        stages of the loan, while a higher portion of the EMI goes toward principal repayment in later
+                        years. This structure is called an amortization schedule. If you wish to pay off your loan
+                        early, you can make prepayments or opt for a part-payment facility to reduce the outstanding
+                        principal amount.</p>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">9. Tax Benefits of Home Loans</h4>
+                    <p>Home loans come with significant tax benefits under Section 80C and Section 24(b) of the Income
+                        Tax Act in India. These tax benefits can help reduce your taxable income and, thereby, your tax
+                        liability. Here’s a breakdown of the key tax deductions available:</p>
+                    <ul>
+                        <li><strong>Section 80C</strong>: You can claim up to ₹1.5 lakh in principal repayment as a
+                            deduction under Section 80C.</li>
+                        <li><strong>Section 24(b)</strong>: Interest paid on home loans can be claimed as a deduction of
+                            up to ₹2 lakh annually under Section 24(b).</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">10. Common Mistakes to Avoid When Taking a Home Loan</h4>
+                    <p>While applying for a home loan, borrowers should be aware of certain pitfalls that could lead to
+                        financial strain later. Here are some common mistakes to avoid:</p>
+                    <ul>
+                        <li><strong>Not Checking the EMI Affordability</strong>: It’s essential to calculate your EMI
+                            and ensure it fits within your budget before applying for a home loan.</li>
+                        <li><strong>Ignoring Hidden Costs</strong>: In addition to the loan amount, there are other
+                            costs involved, such as processing fees, insurance premiums, and registration fees.</li>
+                        <li><strong>Overestimating Loan Eligibility</strong>: Many borrowers apply for a loan amount
+                            that they cannot afford to repay. Always consider your actual repayment capacity.</li>
+                        <li><strong>Choosing the Wrong Loan Tenure</strong>: A long tenure may result in lower EMIs, but
+                            it leads to higher total interest payments. Choosing the right tenure based on your
+                            financial condition is important.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">11. Home Loan Refinancing</h4>
+                    <p>Home loan refinancing involves replacing an existing home loan with a new one, often with better
+                        terms or lower interest rates. Refinancing can be an effective way to reduce your monthly
+                        payments or pay off your loan faster. It’s important to weigh the benefits of refinancing
+                        against any fees or penalties associated with early repayment before proceeding.</p>
+
+                    <h4 class="mb-md-3">12. Home Loan for NRIs</h4>
+                    <p>Non-Resident Indians (NRIs) are also eligible for home loans in India, although the eligibility
+                        criteria may differ slightly from that of residents. NRIs typically need to meet specific
+                        requirements, such as a steady income, a good credit score, and a valid Indian passport. The
+                        loan amount is usually based on the borrower’s income and the property’s location.</p>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">13. Conclusion</h4>
+                    <p>Home loans are an essential tool for individuals looking to purchase property. They offer a
+                        convenient and accessible way to finance homeownership, but borrowers must carefully consider
+                        all aspects of a loan before committing. By understanding the various types of home loans,
+                        eligibility criteria, and the application process, borrowers can make informed decisions that
+                        align with</p>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">FAQs</h4>
+
+                    <div class="accordion " id="faqAccordion">
+                        <!-- Question 1 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq1">
+                                    How is my monthly loan payment calculated?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Your monthly payment is calculated using the loan amount, interest rate, and loan
+                                    term. It follows this formula: <br>
+                                    <code>EMI = P × r × (1 + r)^n / ((1 + r)^n - 1)</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 2 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq2">
+                                    What is the total interest I will pay?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    The total interest is calculated as the total amount paid minus the original loan
+                                    amount.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 3 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq3">
+                                    Can I afford this loan with my income?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    You should not exceed 40% of your monthly income on loan payments for financial
+                                    safety.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 4 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq4">
+                                    How does loan term affect my payment?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    A longer term means lower monthly payments but higher total interest.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 5 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq5">
+                                    Can I repay my loan early?
+                                </button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, but some banks may charge a prepayment penalty. Check with your lender.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-gap"></div>
+
+    <footer>
+        <p>&copy; 2025 Loan Calculator Website</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

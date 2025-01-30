@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Loan Calculator</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <header class="">
+        <nav class="navbar navbar-expand-lg navbar-transparent container">
+            <a class="navbar-brand" href="index.html">Loan Calculator</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home Loan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="personal-loan.html">Personal Loan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="car-loan.html">Car Loan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="calculator-section">
+        <div class="container p-3 p-md-5">
+
+            <h1 class="main-banner-title">Personal Loan Calculator</h1>
+            <form id="loan-form" class="row g-3 justify-content-center mt-3 mt-md-5">
+                <!-- Loan Amount and Interest Rate in a Row -->
+                <div class="col-md-4 text-start">
+                    <label for="loan-amount" class="form-label text-start">Loan Amount:</label>
+                    <input type="number" id="loan-amount" class="form-control" placeholder="Enter loan amount" required>
+                </div>
+                <div class="col-md-4 text-start">
+                    <label for="interest-rate" class="form-label">Interest Rate (%):</label>
+                    <input type="number" id="interest-rate" class="form-control" placeholder="Enter interest rate"
+                        required>
+                </div>
+
+                <!-- Loan Term and a New Row for Submit Button -->
+                <div class="col-md-4 text-start">
+                    <label for="loan-term" class="form-label">Loan Term (Years):</label>
+                    <input type="number" id="loan-term" class="form-control" placeholder="Enter loan term" required>
+                </div>
+
+                <div class="col-md-4 d-flex align-items-end justify-content-center">
+                    <button type="submit" class="btn btn-primary w-100 calculate-btn">Calculate</button>
+                </div>
+                <hr>
+                <h4 class="m-0 fs-5">Choose Your Loan Type</h4>
+                <p class="m-0 mt-2 mt-md-0 fs-6">Click below to learn more and apply for the loan that fits your needs.
+                </p>
+                <div class="col-12 d-flex flex-wrap align-items-center justify-content-center mt-2 mt-md-4">
+                    <a href="index.html" class="btn btn-primary btn-lg mx-2 mt-2 mt-ms-0">Home Loan</a>
+                    <a href="personal-loan.html" class="btn btn-success btn-lg mx-2 mt-2 mt-ms-0">Personal Loan</a>
+                    <a href="car-loan.html" class="btn btn-danger btn-lg mx-2 mt-2 mt-ms-0">Car Loan</a>
+                </div>
+            </form>
+
+            <div id="result" style="display: none;">
+                <h3>Loan EMI: ₹<span id="emi">0</span></h3>
+                <p>Loan Amount: ₹<span id="amount"></span></p>
+                <p>Interest Rate: <span id="rate"></span>%</p>
+                <p>Loan Term: <span id="term"></span> years</p>
+                <div class="container">
+
+                    <canvas id="loan-chart"></canvas>
+                </div>
+
+                <!-- Print and Share Buttons -->
+                <button id="print-btn">Print</button>
+                <button id="share-btn">Share</button>
+            </div>
+        </div>
+    </section>
+    <section class="calculator-section text-start">
+        <div class="container p-3 p-md-5">
+            <div class="row">
+                <div class="col-md-12 main-content">
+                    <h4 class="mb-md-3">1. What is a Personal Loan?</h4>
+                    <p>A personal loan is an unsecured loan that can be used for a variety of purposes, such as paying
+                        for medical expenses, consolidating debt, or funding personal projects. Unlike secured loans,
+                        personal loans do not require collateral, which means the lender relies solely on the borrower’s
+                        creditworthiness to approve the loan. Personal loans are typically offered by banks, credit
+                        unions, and online lenders, and come with a fixed interest rate and repayment period.</p>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">2. Types of Personal Loans</h4>
+                    <p>Personal loans come in several types, each designed for different financial needs. The most
+                        common types of personal loans are:</p>
+                    <ul>
+                        <li><strong>Secured Personal Loan</strong>: A secured personal loan requires collateral, such as
+                            a car or property, to back the loan. This can result in a lower interest rate but carries
+                            the risk of losing the collateral if the borrower fails to repay.</li>
+                        <li><strong>Unsecured Personal Loan</strong>: An unsecured personal loan does not require
+                            collateral. Since there’s no security, lenders tend to charge a higher interest rate,
+                            especially for individuals with a low credit score.</li>
+                        <li><strong>Debt Consolidation Loan</strong>: This type of personal loan is used to consolidate
+                            multiple debts into one loan, often with a lower interest rate, making it easier to manage
+                            payments.</li>
+                        <li><strong>Medical Loan</strong>: A medical loan is specifically designed to cover medical
+                            expenses, whether for treatment, surgery, or health-related bills.</li>
+                        <li><strong>Home Improvement Loan</strong>: A personal loan can be used for home improvements,
+                            such as renovations or repairs. These loans can either be secured or unsecured, depending on
+                            the lender.</li>
+                        <li><strong>Wedding Loan</strong>: Personal loans can also help finance weddings, allowing the
+                            couple to manage wedding costs over time.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">3. How Does a Personal Loan Work?</h4>
+                    <p>A personal loan works by providing the borrower with a lump sum of money that must be repaid in
+                        monthly installments over a set period, typically ranging from 12 to 60 months. The loan amount,
+                        interest rate, and repayment term determine the size of the monthly payment. The interest rate
+                        can either be fixed or variable, depending on the terms of the loan agreement.</p>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">4. Personal Loan Eligibility</h4>
+                    <p>To qualify for a personal loan, you need to meet certain eligibility criteria set by the lender.
+                        While the specific requirements may vary, most lenders typically require the following:</p>
+                    <ul>
+                        <li><strong>Age</strong>: The applicant should generally be between 21 and 60 years of age.</li>
+                        <li><strong>Income</strong>: A stable income, whether salaried or self-employed, is essential.
+                            Lenders often look for a minimum monthly income to ensure the borrower can afford the loan
+                            repayments.</li>
+                        <li><strong>Credit Score</strong>: A good credit score is critical in securing a personal loan
+                            with favorable terms. A score above 650 is generally required, but some lenders may approve
+                            loans with lower scores, albeit at higher interest rates.</li>
+                        <li><strong>Employment Status</strong>: Lenders prefer borrowers with stable employment. Proof
+                            of employment or business ownership is typically required.</li>
+                        <li><strong>Existing Debt</strong>: Some lenders may evaluate your debt-to-income ratio to
+                            ensure that you do not have excessive financial obligations that could hinder your ability
+                            to repay the loan.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">5. Benefits of Personal Loans</h4>
+                    <p>Personal loans offer numerous advantages, including:</p>
+                    <ul>
+                        <li><strong>Flexible Use</strong>: Personal loans can be used for any purpose, making them
+                            highly flexible. Whether you're consolidating debt, renovating your home, or paying for a
+                            vacation, you can use the funds as needed.</li>
+                        <li><strong>No Collateral Required</strong>: Unsecured personal loans don’t require collateral,
+                            reducing the risk of losing valuable assets if you fail to repay the loan.</li>
+                        <li><strong>Fixed Interest Rates</strong>: Many personal loans come with a fixed interest rate,
+                            meaning your monthly payments will stay the same throughout the loan term, making budgeting
+                            easier.</li>
+                        <li><strong>Consolidate Debt</strong>: Personal loans are a great tool for consolidating
+                            high-interest debts into a single, lower-interest loan, helping you manage repayments more
+                            effectively.</li>
+                        <li><strong>Improves Credit Score</strong>: By successfully managing a personal loan, you can
+                            improve your credit score, demonstrating your ability to handle debt responsibly.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">6. Documents Required for Personal Loan Application</h4>
+                    <p>When applying for a personal loan, you’ll typically need to submit the following documents:</p>
+                    <ul>
+                        <li><strong>Proof of Identity</strong>: A government-issued ID such as a passport, driver’s
+                            license, or Aadhar card.</li>
+                        <li><strong>Proof of Address</strong>: Utility bills, bank statements, or rental agreements.
+                        </li>
+                        <li><strong>Proof of Income</strong>: Pay stubs, salary slips, or bank statements showing your
+                            income over the last few months.</li>
+                        <li><strong>Credit Report</strong>: Lenders often check your credit score before approving the
+                            loan. You can obtain your credit report from authorized agencies.</li>
+                        <li><strong>Employment Details</strong>: Documents related to your current employment or
+                            business, including a letter from your employer or tax returns if self-employed.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">7. Interest Rates on Personal Loans</h4>
+                    <p>The interest rate on a personal loan varies depending on several factors, including the loan
+                        amount, tenure, credit score, and the lender’s terms. Typically, personal loan interest rates
+                        range from 10% to 25% per annum. Borrowers with higher credit scores tend to receive lower
+                        interest rates. The rate can either be fixed (remains constant) or variable (can change during
+                        the loan term), depending on the agreement with the lender.</p>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">8. EMI (Equated Monthly Installment) Calculation</h4>
+                    <p>The EMI is the fixed monthly payment made to repay the personal loan. It is calculated based on
+                        the loan amount, interest rate, and loan tenure. You can use an online EMI calculator to
+                        estimate your monthly payments. The formula to calculate EMI is:</p>
+                    <pre>EMI = [P × r × (1+r)^n] / [(1+r)^n – 1]</pre>
+                    <p>Where:</p>
+                    <ul>
+                        <li><strong>P</strong> = Principal loan amount</li>
+                        <li><strong>r</strong> = Monthly interest rate</li>
+                        <li><strong>n</strong> = Loan tenure in months</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">9. How to Apply for a Personal Loan?</h4>
+                    <p>Applying for a personal loan typically involves the following steps:</p>
+                    <ol>
+                        <li><strong>Research Lenders</strong>: Start by comparing personal loan offers from various
+                            lenders, including banks, credit unions, and online lenders. Consider factors like interest
+                            rates, loan terms, and fees.</li>
+                        <li><strong>Check Eligibility</strong>: Before applying, check your eligibility to ensure you
+                            meet the lender’s requirements. This may include factors like income, credit score, and
+                            employment status.</li>
+                        <li><strong>Submit Application</strong>: Complete the application form with your personal and
+                            financial details. You will also need to provide the required documents.</li>
+                        <li><strong>Approval Process</strong>: After submitting your application, the lender will assess
+                            your creditworthiness and may ask for additional information. If approved, the lender will
+                            provide a loan offer.</li>
+                        <li><strong>Sign the Loan Agreement</strong>: Once you accept the loan offer, sign the agreement
+                            outlining the terms and conditions. The lender will disburse the funds to your bank account
+                            or directly to the intended recipient.</li>
+                    </ol>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">10. Common Mistakes to Avoid When Taking a Personal Loan</h4>
+                    <p>Here are some common mistakes to avoid when applying for a personal loan:</p>
+                    <ul>
+                        <li><strong>Borrowing More Than You Need</strong>: Only borrow the amount you need. Borrowing
+                            more will lead to higher interest payments and unnecessary debt.</li>
+                        <li><strong>Ignoring the Fine Print</strong>: Always read the terms and conditions of the loan
+                            before signing. Pay attention to fees, interest rates, and repayment terms.</li>
+                        <li><strong>Missing Repayments</strong>: Missing payments will negatively impact your credit
+                            score and could result in additional fees. Make sure you can afford the monthly
+                            installments.</li>
+                        <li><strong>Not Comparing Offers</strong>: Don’t settle for the first loan offer. Compare
+                            different lenders to ensure you get the best rates and terms.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">11. Conclusion</h4>
+                    <p>Personal loans are a versatile financial product that can help you manage a variety of financial
+                        needs, from consolidating debt to funding personal projects. By understanding the loan process,
+                        eligibility requirements, and benefits, you can make an informed decision about whether a
+                        personal loan is right for you. Be sure to compare offers from different lenders to get the best
+                        possible terms, and avoid common mistakes that can lead to financial strain.</p>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">FAQs</h4>
+
+                    <div class="accordion " id="faqAccordion">
+                        <!-- Question 1 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq1">
+                                    What is a personal loan?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    A personal loan is an unsecured loan that can be used for various purposes like debt
+                                    consolidation, home improvement, medical expenses, or personal projects. It does not
+                                    require collateral, and the loan amount is repaid over a fixed term with interest.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 2 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq2">
+                                    What are the eligibility criteria for a personal loan?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    To be eligible for a personal loan, you typically need to be between 21 and 60 years
+                                    old, have a stable income, and a good credit score. Some lenders may also require
+                                    proof of employment and a minimum income threshold.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 3 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq3">
+                                    How do I apply for a personal loan?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    You can apply for a personal loan by visiting the lender’s website or branch, filling out an application form, and submitting necessary documents like ID proof, income proof, and address proof. Once approved, the loan amount will be disbursed to your account.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 4 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq4">
+                                    Can I use a personal loan for any purpose?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, personal loans are flexible, and you can use them for various purposes, including consolidating debt, paying for medical expenses, wedding expenses, home renovations, or any other personal needs.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 5 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq5">
+                                    What is the interest rate on personal loans?
+                                </button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    The interest rate on personal loans can vary depending on factors like your credit score, income, and the loan amount. Typically, interest rates range from 10% to 25% per annum.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-gap"></div>
+
+    <footer>
+        <p>&copy; 2025 Loan Calculator Website</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

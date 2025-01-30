@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Loan Calculator</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="home-loan.html">Home Loan</a></li>
+                <li><a href="personal-loan.html">Personal Loan</a></li>
+                <li><a href="car-loan.html">Car Loan</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="contact-us.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="calculator-section">
+        <div class="container p-md-5">
+
+            <h1>Home Loan Calculator</h1>
+            <form id="loan-form" class="row g-3 justify-content-center mt-5">
+                <!-- Loan Amount and Interest Rate in a Row -->
+                <div class="col-md-4 text-start">
+                    <label for="loan-amount" class="form-label text-start">Loan Amount:</label>
+                    <input type="number" id="loan-amount" class="form-control" placeholder="Enter loan amount" required>
+                </div>
+                <div class="col-md-4 text-start">
+                    <label for="interest-rate" class="form-label">Interest Rate (%):</label>
+                    <input type="number" id="interest-rate" class="form-control" placeholder="Enter interest rate"
+                        required>
+                </div>
+
+                <!-- Loan Term and a New Row for Submit Button -->
+                <div class="col-md-4 text-start">
+                    <label for="loan-term" class="form-label">Loan Term (Years):</label>
+                    <input type="number" id="loan-term" class="form-control" placeholder="Enter loan term" required>
+                </div>
+
+                <div class="col-md-4 d-flex align-items-end justify-content-center">
+                    <button type="submit" class="btn btn-primary w-100 calculate-btn">Calculate</button>
+                </div>
+            </form>
+
+            <div id="result" style="display: none;">
+                <h3>Loan EMI: ₹<span id="emi">0</span></h3>
+                <p>Loan Amount: ₹<span id="amount"></span></p>
+                <p>Interest Rate: <span id="rate"></span>%</p>
+                <p>Loan Term: <span id="term"></span> years</p>
+                <div class="container">
+
+                    <canvas id="loan-chart"></canvas>
+                </div>
+
+                <!-- Print and Share Buttons -->
+                <button id="print-btn">Print</button>
+                <button id="share-btn">Share</button>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container p-md-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="mb-md-3">Credit Market in India: An Overview of Loan Trends and EMI Calculators</h4>
+
+                    <p>The credit market in India is experiencing steady growth. Currently, India ranks as the 4th
+                        largest credit industry globally, with a remarkable Compound Annual Growth Rate (CAGR) of over
+                        11% year on year. A major chunk of this growth is driven by short-term credit products such as
+                        personal loans and credit cards, which together make up 78% of all credit lending in the
+                        country. Understanding how to manage loan repayments, particularly the Equated Monthly
+                        Installment (EMI), is essential for effective financial planning.</p>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">Key Factors Affecting Your Loan EMI Amount</h4>
+
+                    <p>Several factors determine the amount of EMI you need to repay for your loan. By understanding
+                        these factors, you can better plan for your financial commitments:</p>
+
+                    <ul>
+                        <li><strong>Loan Tenure:</strong> Your loan's tenure may impact the EMI amount. A shorter tenure
+                            results in higher EMIs, while a longer tenure leads to lower monthly payments.</li>
+                        <li><strong>Interest Rate:</strong> The rate of interest directly affects your EMI. A lower
+                            interest rate results in a more affordable EMI.</li>
+                        <li><strong>Loan Amount:</strong> The total loan amount influences your EMI calculation. Higher
+                            loan amounts lead to higher EMIs, while smaller amounts have lower monthly payments.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">How Can an Online EMI Calculator Help?</h4>
+
+                    <p>With the number of credit accounts in India steadily increasing, it’s crucial for borrowers to
+                        accurately assess their EMI obligations before applying for a loan. An online EMI calculator
+                        simplifies this process, offering several benefits:</p>
+
+                    <ul>
+                        <li>Get an instant, accurate estimate of your EMI amount.</li>
+                        <li>Saves time by eliminating the need for complex manual calculations.</li>
+                        <li>Ensures accuracy, eliminating any possibility of miscalculation.</li>
+                        <li>Offers loan-specific calculations, with different methods for home loans, personal loans,
+                            and car loans.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">EMI Calculation Formula</h4>
+
+                    <p>The EMI amount is calculated using the formula:</p>
+
+                    <pre>EMI = [P × R × (1 + R)^N] / [(1 + R)^(N - 1)]</pre>
+
+                    <p>Where:</p>
+                    <ul>
+                        <li><strong>P:</strong> Principal loan amount</li>
+                        <li><strong>R:</strong> Monthly rate of interest</li>
+                        <li><strong>N:</strong> Loan tenure (in months)</li>
+                    </ul>
+
+                    <p>This standardized formula is used by online EMI calculators to provide accurate estimates of your
+                        monthly payments.</p>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">Types of EMI Calculators</h4>
+
+                    <p>Groww offers various types of EMI calculators designed for specific loan products:</p>
+
+                    <ul>
+                        <li><strong>Home Loan EMI Calculator:</strong> Calculates EMI for home loans, typically with
+                            larger loan amounts and longer tenures.</li>
+                        <li><strong>Car Loan EMI Calculator:</strong> Helps you calculate EMIs for car loans with
+                            varying loan amounts, interest rates, and tenures.</li>
+                        <li><strong>Personal Loan EMI Calculator:</strong> Assists in calculating EMIs for personal
+                            loans, which tend to have higher interest rates and shorter tenures.</li>
+                        <li><strong>Education Loan EMI Calculator:</strong> Enables you to calculate EMI for education
+                            loans, which often come with a moratorium period.</li>
+                        <li><strong>Loan Against Property EMI Calculator:</strong> Helps calculate EMIs for loans
+                            secured by property.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">Advantages of Using the Groww EMI Calculator</h4>
+
+                    <p>The Groww EMI calculator is an excellent tool for anyone looking to understand their EMI
+                        obligations:</p>
+
+                    <ul>
+                        <li><strong>Free to Use:</strong> The EMI calculator is entirely free and available for
+                            unlimited usage.</li>
+                        <li><strong>Instant Results:</strong> You get the results almost immediately after entering your
+                            loan details.</li>
+                        <li><strong>100% Accuracy:</strong> It provides reliable results with zero chances of
+                            miscalculation.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">How to Use the Groww EMI Calculator?</h4>
+
+                    <p>Using the Groww EMI calculator is simple. Just follow these steps:</p>
+                    <ol>
+                        <li>Enter your loan amount, interest rate, and tenure.</li>
+                        <li>The calculator will instantly display your monthly EMI amount.</li>
+                    </ol>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">Other Useful Calculators on Groww</h4>
+
+                    <p>In addition to the EMI calculator, Groww offers a variety of other financial calculators to help
+                        you make informed financial decisions. These calculators are also free and easy to use.</p>
+
+                    <p>“Looking to invest? <a href="https://www.groww.in">Open an account with Groww</a> and start
+                        investing in direct Mutual Funds for free!”</p>
+
+                    <hr>
+
+                    <h4>FAQs</h4>
+
+                    <div class="accordion" id="faqAccordion">
+                        <!-- Question 1 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq1">
+                                    How is my monthly loan payment calculated?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Your monthly payment is calculated using the loan amount, interest rate, and loan
+                                    term. It follows this formula: <br>
+                                    <code>EMI = P × r × (1 + r)^n / ((1 + r)^n - 1)</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 2 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq2">
+                                    What is the total interest I will pay?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    The total interest is calculated as the total amount paid minus the original loan
+                                    amount.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 3 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq3">
+                                    Can I afford this loan with my income?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    You should not exceed 40% of your monthly income on loan payments for financial
+                                    safety.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 4 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq4">
+                                    How does loan term affect my payment?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    A longer term means lower monthly payments but higher total interest.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 5 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq5">
+                                    Can I repay my loan early?
+                                </button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, but some banks may charge a prepayment penalty. Check with your lender.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-gap"></div>
+
+    <footer>
+        <p>&copy; 2025 Loan Calculator Website</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

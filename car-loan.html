@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Loan Calculator</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <header class="">
+        <nav class="navbar navbar-expand-lg navbar-transparent container">
+            <a class="navbar-brand" href="index.html">Loan Calculator</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home Loan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="personal-loan.html">Personal Loan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="car-loan.html">Car Loan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="calculator-section">
+        <div class="container p-3 p-md-5">
+
+            <h1 class="main-banner-title">Car Loan Calculator</h1>
+            <form id="loan-form" class="row g-3 justify-content-center mt-3 mt-md-5">
+                <!-- Loan Amount and Interest Rate in a Row -->
+                <div class="col-md-4 text-start">
+                    <label for="loan-amount" class="form-label text-start">Loan Amount:</label>
+                    <input type="number" id="loan-amount" class="form-control" placeholder="Enter loan amount" required>
+                </div>
+                <div class="col-md-4 text-start">
+                    <label for="interest-rate" class="form-label">Interest Rate (%):</label>
+                    <input type="number" id="interest-rate" class="form-control" placeholder="Enter interest rate"
+                        required>
+                </div>
+
+                <!-- Loan Term and a New Row for Submit Button -->
+                <div class="col-md-4 text-start">
+                    <label for="loan-term" class="form-label">Loan Term (Years):</label>
+                    <input type="number" id="loan-term" class="form-control" placeholder="Enter loan term" required>
+                </div>
+
+                <div class="col-md-4 d-flex align-items-end justify-content-center">
+                    <button type="submit" class="btn btn-primary w-100 calculate-btn">Calculate</button>
+                </div>
+                <hr>
+                <h4 class="m-0 fs-5">Choose Your Loan Type</h4>
+                <p class="m-0 mt-2 mt-md-0 fs-6">Click below to learn more and apply for the loan that fits your needs.
+                </p>
+                <div class="col-12 d-flex flex-wrap align-items-center justify-content-center mt-2 mt-md-4">
+                    <a href="index.html" class="btn btn-primary btn-lg mx-2 mt-2 mt-ms-0">Home Loan</a>
+                    <a href="personal-loan.html" class="btn btn-success btn-lg mx-2 mt-2 mt-ms-0">Personal Loan</a>
+                    <a href="car-loan.html" class="btn btn-danger btn-lg mx-2 mt-2 mt-ms-0">Car Loan</a>
+                </div>
+            </form>
+
+            <div id="result" style="display: none;">
+                <h3>Loan EMI: ₹<span id="emi">0</span></h3>
+                <p>Loan Amount: ₹<span id="amount"></span></p>
+                <p>Interest Rate: <span id="rate"></span>%</p>
+                <p>Loan Term: <span id="term"></span> years</p>
+                <div class="container">
+
+                    <canvas id="loan-chart"></canvas>
+                </div>
+
+                <!-- Print and Share Buttons -->
+                <button id="print-btn">Print</button>
+                <button id="share-btn">Share</button>
+            </div>
+        </div>
+    </section>
+    <section class="calculator-section text-start">
+        <div class="container p-3 p-md-5">
+            <div class="row">
+                <div class="col-md-12 main-content">
+                    <h4 class="mb-md-3">1. Introduction to Car Loans</h4>
+                    <p>A car loan is a financial product that allows individuals to purchase a vehicle by borrowing
+                        funds from a lender, which is typically paid back in monthly installments over a set period of
+                        time. Car loans can be an effective solution for people who do not have the full amount
+                        available to buy a car upfront. Whether you're looking to purchase a new or used vehicle,
+                        understanding the ins and outs of car loans will help you make informed decisions.</p>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">2. Types of Car Loans</h4>
+                    <p>There are different types of car loans, each catering to specific needs and borrower profiles.
+                        The most common types of car loans are:</p>
+                    <ul>
+                        <li><strong>Secured Car Loan</strong>: A secured car loan requires the borrower to offer the car
+                            as collateral. In case of non-payment, the lender can seize the vehicle to recover the loan
+                            amount. These loans often come with lower interest rates because of the added security.</li>
+                        <li><strong>Unsecured Car Loan</strong>: An unsecured car loan doesn't require collateral. It is
+                            generally more expensive in terms of interest rates, as the lender assumes more risk. These
+                            loans are ideal for individuals who may not want to pledge their vehicle or don’t have
+                            enough equity in their car.</li>
+                        <li><strong>Balloon Payment Car Loan</strong>: A balloon payment loan involves lower monthly
+                            payments throughout the loan term, with a large lump sum (balloon payment) due at the end.
+                            This type of loan is often used when a borrower expects a large income or windfall toward
+                            the end of the loan period.</li>
+                        <li><strong>Lease Buyout Loan</strong>: If you're currently leasing a vehicle and want to
+                            purchase it outright, a lease buyout loan allows you to do so. These loans provide the funds
+                            needed to buy the car at the end of the lease term.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">3. How Does a Car Loan Work?</h4>
+                    <p>A car loan works by allowing the borrower to borrow a specific amount of money to purchase a car.
+                        The borrower agrees to repay the loan in fixed monthly installments, which usually consist of
+                        the principal amount plus interest. The loan term, typically ranging from 12 to 84 months,
+                        affects the size of the monthly payment.</p>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">4. Eligibility Criteria for Car Loans</h4>
+                    <p>To qualify for a car loan, applicants must meet certain eligibility criteria set by the lender.
+                        While the exact requirements may vary by lender, the general eligibility criteria include:</p>
+                    <ul>
+                        <li><strong>Age</strong>: Most lenders require the borrower to be at least 18 years old, but the
+                            upper age limit may vary depending on the lender.</li>
+                        <li><strong>Income</strong>: A steady source of income is important for demonstrating the
+                            ability to repay the loan. Lenders may ask for proof of income, such as pay stubs or bank
+                            statements.</li>
+                        <li><strong>Credit Score</strong>: A good credit score (usually 650 and above) can help secure a
+                            better interest rate. Borrowers with a lower credit score may still be eligible, but with
+                            higher interest rates.</li>
+                        <li><strong>Employment Status</strong>: Lenders often prefer borrowers with stable employment,
+                            such as salaried employees or self-employed individuals with consistent income.</li>
+                        <li><strong>Down Payment</strong>: Some car loans require a down payment, which reduces the loan
+                            amount and lowers the interest rate.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">5. Documents Required for Car Loan Application</h4>
+                    <p>The documentation required for applying for a car loan typically includes the following:</p>
+                    <ul>
+                        <li><strong>Proof of Identity</strong>: Passport, Aadhar card, driver’s license, or voter ID.
+                        </li>
+                        <li><strong>Proof of Address</strong>: Utility bills, rent agreement, or government-issued
+                            documents.</li>
+                        <li><strong>Proof of Income</strong>: Salary slips, tax returns, or bank statements for the past
+                            3-6 months.</li>
+                        <li><strong>Credit Report</strong>: A copy of your credit score from an authorized agency.</li>
+                        <li><strong>Vehicle Information</strong>: The make, model, year, and price of the car you're
+                            purchasing.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">6. Interest Rates on Car Loans</h4>
+                    <p>The interest rate on a car loan is a key factor in determining the total amount you'll pay for
+                        the car over time. Interest rates can vary based on several factors:</p>
+                    <ul>
+                        <li><strong>Credit Score</strong>: Borrowers with higher credit scores typically qualify for
+                            lower interest rates.</li>
+                        <li><strong>Loan Term</strong>: Shorter loan terms usually come with lower interest rates, but
+                            higher monthly payments.</li>
+                        <li><strong>Loan Amount</strong>: The size of the loan can also affect the interest rate. Larger
+                            loans may come with higher rates.</li>
+                        <li><strong>Type of Loan</strong>: Secured loans generally offer lower interest rates compared
+                            to unsecured loans due to the collateral involved.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">7. EMI (Equated Monthly Installment) Calculation</h4>
+                    <p>The EMI is the amount you pay every month toward the repayment of your car loan. The EMI is
+                        calculated based on the loan amount, interest rate, and loan tenure. There are online EMI
+                        calculators available that can help you estimate your monthly payment before applying for the
+                        loan.</p>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">8. Benefits of Car Loans</h4>
+                    <p>Car loans offer a number of benefits, including:</p>
+                    <ul>
+                        <li><strong>Immediate Access to Vehicle</strong>: Car loans provide immediate access to funds,
+                            enabling you to purchase a vehicle without waiting to save the entire amount.</li>
+                        <li><strong>Flexible Loan Terms</strong>: Many lenders offer flexible repayment terms, ranging
+                            from a few months to several years, allowing borrowers to choose a tenure that suits their
+                            financial situation.</li>
+                        <li><strong>Build Credit History</strong>: Successfully repaying your car loan can help build or
+                            improve your credit score, making it easier to obtain loans in the future.</li>
+                        <li><strong>Ownership of the Vehicle</strong>: Unlike leasing, where you don’t own the car, a
+                            car loan allows you to own the vehicle once the loan is repaid in full.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">9. Car Loan Application Process</h4>
+                    <p>The process for applying for a car loan typically involves the following steps:</p>
+                    <ol>
+                        <li><strong>Research and Comparison</strong>: Start by researching various lenders and comparing
+                            interest rates, terms, and conditions. Look for lenders that offer the best deals based on
+                            your requirements.</li>
+                        <li><strong>Application Form</strong>: Fill out the loan application form, providing details
+                            about your personal information, income, and the car you're planning to purchase.</li>
+                        <li><strong>Verification</strong>: The lender will verify your identity, income, and credit
+                            score before approving your loan. Some lenders may also assess your ability to repay based
+                            on your existing debts and financial obligations.</li>
+                        <li><strong>Approval and Offer</strong>: If approved, the lender will offer you the loan along
+                            with the terms, including the loan amount, interest rate, repayment period, and any other
+                            associated fees.</li>
+                        <li><strong>Disbursement</strong>: Once the offer is accepted, the loan amount will be disbursed
+                            to your account or directly to the seller, allowing you to complete the purchase.</li>
+                    </ol>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">10. Common Mistakes to Avoid When Applying for a Car Loan</h4>
+                    <p>Here are some common mistakes to avoid during the car loan process:</p>
+                    <ul>
+                        <li><strong>Not Checking Your Credit Score</strong>: It’s important to check your credit score
+                            before applying for a car loan. A low credit score could lead to higher interest rates or
+                            loan rejection.</li>
+                        <li><strong>Not Shopping Around</strong>: Always compare offers from different lenders to ensure
+                            you're getting the best terms.</li>
+                        <li><strong>Ignoring Additional Costs</strong>: Apart from the monthly installment, make sure to
+                            account for other costs such as insurance, registration, and maintenance.</li>
+                        <li><strong>Overborrowing</strong>: Borrow only what you can comfortably afford to repay.
+                            Overcommitting to a large loan can strain your finances.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4 class="mb-md-3">11. Conclusion</h4>
+                    <p>Car loans are an excellent way to finance the purchase of a vehicle without waiting to save the
+                        entire cost upfront. By understanding the various types of car loans, interest rates, and
+                        eligibility criteria, you can make an informed decision that best suits your financial needs.
+                        Whether you're buying your first car or upgrading to a new one, a car loan can help you achieve
+                        your goal of car ownership. However, it’s essential to choose a loan that fits your budget and
+                        repayment capability to avoid any financial strain in the future.</p>
+                    <hr>
+
+                    <h4 class="mb-md-3">FAQs</h4>
+
+                    <div class="accordion " id="faqAccordion">
+                        <!-- Question 1 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq1">
+                                    What is a car loan?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    A car loan is a type of secured loan used to purchase a vehicle. The loan is secured
+                                    against the car itself, meaning the lender can repossess the vehicle if the borrower
+                                    fails to make the payments.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 2 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq2">
+                                    How do I qualify for a car loan?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    To qualify for a car loan, you generally need to have a stable income, a good credit
+                                    score, and a valid driver’s license. The vehicle you are purchasing also plays a
+                                    role in the loan approval process.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 3 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq3">
+                                    Can I apply for a car loan if I have bad credit?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    While it’s possible to get a car loan with bad credit, the interest rates may be
+                                    higher. It’s recommended to compare offers from different lenders and consider
+                                    securing the loan with a co-signer or collateral to improve your chances of
+                                    approval.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 4 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq4">
+                                    How much down payment is required for a car loan?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    The down payment for a car loan typically ranges from 10% to 20% of the car’s
+                                    purchase price. A larger down payment can reduce your monthly payments and the total
+                                    interest paid over the life of the loan.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 5 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq5">
+                                    What is the interest rate on a car loan?
+                                </button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Interest rates on car loans vary depending on factors such as your credit score,
+                                    loan term, and the lender’s policies. They typically range from 5% to 15% annually,
+                                    though rates may be lower for borrowers with excellent credit.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 6 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq6">
+                                    How long does it take to get approved for a car loan?
+                                </button>
+                            </h2>
+                            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Approval times for car loans vary by lender. Online lenders may provide approval
+                                    within a few minutes, while banks and credit unions may take a few business days to
+                                    process the loan application.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 7 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq7">
+                                    Can I pay off my car loan early?
+                                </button>
+                            </h2>
+                            <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Many lenders allow early repayment of car loans without penalties, but it’s
+                                    important to verify with your lender about any prepayment fees. Paying off the loan
+                                    early can help you save on interest costs.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-gap"></div>
+
+    <footer>
+        <p>&copy; 2025 Loan Calculator Website</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
