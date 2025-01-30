@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan EMI Calculation & Its Impact on Interest Rates and Prepayments</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <header class="">
+        <nav class="navbar navbar-expand-lg navbar-transparent container">
+           <a class="navbar-brand" href="index.html" >
+                <img src="img/loancheckercalculator.png" alt="" class="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home Loan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="personal-loan.html">Personal Loan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="car-loan.html">Car Loan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="loan-emi-calculation-work.html">How It Work</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header> 
+    <section class="my-4">
+        <div class="container">
+            <h4>What is a Loan EMI?</h4>
+            <p>A Loan EMI (Equated Monthly Installment) is a fixed monthly payment made by the borrower to the lender
+                until the loan is fully repaid. It consists of two components:</p>
+            <p><strong>Principal Amount</strong> – The original loan amount borrowed.</p>
+            <p><strong>Interest Amount</strong> – The cost of borrowing money from the lender.</p>
+            <p>The EMI remains constant throughout the tenure of the loan in most cases unless you opt for a floating
+                interest rate or make a prepayment.</p>
+
+                <hr>
+
+            <h4>Types of Loans with EMI Repayment Structure</h4>
+            <p>✔ Home Loans<br>✔ Personal Loans<br>✔ Car Loans<br>✔ Education Loans<br>✔ Business Loans</p>
+
+            <hr>
+
+            <h4>How is EMI Calculated?</h4>
+            <p>The formula for calculating EMI is:</p>
+            <p>EMI = [P × r × (1 + r)<sup>n</sup>] / [(1 + r)<sup>n</sup> - 1]</p>
+            <p><strong>Where:</strong></p>
+            <p>P = Loan amount</p>
+            <p>r = Monthly interest rate (Annual interest rate / 12 / 100)</p>
+            <p>n = Loan tenure in months</p>
+
+            <hr>
+
+            <h4>Example Calculation</h4>
+            <p>Suppose you take a loan of ₹10,00,000 at an annual interest rate of 10% for 5 years.</p>
+            <p>Monthly Interest Rate = 10 / 12 / 100 = 0.0083</p>
+            <p>Tenure = 5 × 12 = 60 months</p>
+            <p>Using the formula, the EMI will be approximately ₹21,247 per month.</p>
+
+            <hr>
+
+            <h4>How the Reducing Balance Method Works?</h4>
+            <p>Many loans, especially home and car loans, use the reducing balance method, which ensures that interest
+                is calculated on the remaining balance rather than the initial principal.</p>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped text-center">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Month</th>
+                            <th>Principal Outstanding at the Beginning</th>
+                            <th>EMI</th>
+                            <th>Interest</th>
+                            <th>Principal Repayment</th>
+                            <th>Principal Outstanding at the End</th>
+                            <th>% Loan Repaid</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>5,000,000</td>
+                            <td>48,251</td>
+                            <td>41,667</td>
+                            <td>6,584</td>
+                            <td>4,993,416</td>
+                            <td>0.13%</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>4,993,416</td>
+                            <td>48,251</td>
+                            <td>41,612</td>
+                            <td>6,639</td>
+                            <td>4,986,776</td>
+                            <td>0.26%</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>4,986,776</td>
+                            <td>48,251</td>
+                            <td>41,556</td>
+                            <td>6,695</td>
+                            <td>4,980,082</td>
+                            <td>0.40%</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>4,980,082</td>
+                            <td>48,251</td>
+                            <td>41,501</td>
+                            <td>6,750</td>
+                            <td>4,973,332</td>
+                            <td>0.53%</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>4,973,332</td>
+                            <td>48,251</td>
+                            <td>41,445</td>
+                            <td>6,806</td>
+                            <td>4,966,526</td>
+                            <td>0.67%</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>4,966,526</td>
+                            <td>48,251</td>
+                            <td>41,389</td>
+                            <td>6,862</td>
+                            <td>4,959,664</td>
+                            <td>0.81%</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>4,959,664</td>
+                            <td>48,251</td>
+                            <td>41,330</td>
+                            <td>6,921</td>
+                            <td>4,952,743</td>
+                            <td>0.96%</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>4,952,743</td>
+                            <td>48,251</td>
+                            <td>41,273</td>
+                            <td>6,978</td>
+                            <td>4,945,765</td>
+                            <td>1.10%</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>4,945,765</td>
+                            <td>48,251</td>
+                            <td>41,214</td>
+                            <td>7,037</td>
+                            <td>4,938,728</td>
+                            <td>1.25%</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>4,938,728</td>
+                            <td>48,251</td>
+                            <td>41,156</td>
+                            <td>7,095</td>
+                            <td>4,931,633</td>
+                            <td>1.40%</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>4,931,631</td>
+                            <td>48,251</td>
+                            <td>41,097</td>
+                            <td>7,154</td>
+                            <td>4,924,477</td>
+                            <td>1.51%</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>4,924,477</td>
+                            <td>48,251</td>
+                            <td>41,037</td>
+                            <td>7,214</td>
+                            <td>4,917,263</td>
+                            <td>1.65%</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>4,917,263</td>
+                            <td>48,251</td>
+                            <td>40,977</td>
+                            <td>7,274</td>
+                            <td>4,909,989</td>
+                            <td>1.80%</td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td>4,909,989</td>
+                            <td>48,251</td>
+                            <td>40,917</td>
+                            <td>7,335</td>
+                            <td>4,902,655</td>
+                            <td>1.95%</td>
+                        </tr>
+                        <tr>
+                            <td>15</td>
+                            <td>4,902,655</td>
+                            <td>48,251</td>
+                            <td>40,855</td>
+                            <td>7,396</td>
+                            <td>4,895,259</td>
+                            <td>2.09%</td>
+                        </tr>
+                        <tr>
+                            <td>16</td>
+                            <td>4,895,259</td>
+                            <td>48,251</td>
+                            <td>40,794</td>
+                            <td>7,457</td>
+                            <td>4,887,802</td>
+                            <td>2.24%</td>
+                        </tr>
+                        <tr>
+                            <td>17</td>
+                            <td>4,887,802</td>
+                            <td>48,251</td>
+                            <td>40,732</td>
+                            <td>7,519</td>
+                            <td>4,880,282</td>
+                            <td>2.39%</td>
+                        </tr>
+                        <tr>
+                            <td>18</td>
+                            <td>4,880,282</td>
+                            <td>48,251</td>
+                            <td>40,669</td>
+                            <td>7,582</td>
+                            <td>4,872,700</td>
+                            <td>2.55%</td>
+                        </tr>
+                        <tr>
+                            <td>19</td>
+                            <td>4,872,700</td>
+                            <td>48,251</td>
+                            <td>40,606</td>
+                            <td>7,645</td>
+                            <td>4,865,055</td>
+                            <td>2.70%</td>
+                        </tr>
+                        <tr>
+                            <td>20</td>
+                            <td>4,865,055</td>
+                            <td>48,251</td>
+                            <td>40,542</td>
+                            <td>7,709</td>
+                            <td>4,857,346</td>
+                            <td>2.85%</td>
+                        </tr>
+                        <tr>
+                            <td>21</td>
+                            <td>4,857,346</td>
+                            <td>48,251</td>
+                            <td>40,478</td>
+                            <td>7,773</td>
+                            <td>4,849,573</td>
+                            <td>3.01%</td>
+                        </tr>
+                        <tr>
+                            <td>22</td>
+                            <td>4,849,573</td>
+                            <td>48,251</td>
+                            <td>40,413</td>
+                            <td>7,838</td>
+                            <td>4,841,735</td>
+                            <td>3.17%</td>
+                        </tr>
+                        <tr>
+                            <td>23</td>
+                            <td>4,841,735</td>
+                            <td>48,251</td>
+                            <td>40,348</td>
+                            <td>7,903</td>
+                            <td>4,833,832</td>
+                            <td>3.32%</td>
+                        </tr>
+                        <tr>
+                            <td>24</td>
+                            <td>4,833,832</td>
+                            <td>48,251</td>
+                            <td>40,282</td>
+                            <td>7,969</td>
+                            <td>4,825,863</td>
+                            <td>3.48%</td>
+                        </tr>
+                        <tr>
+                            <td>25</td>
+                            <td>3,200,000</td>
+                            <td>50,000</td>
+                            <td>40,000</td>
+                            <td>10,000</td>
+                            <td>3,150,000</td>
+                            <td>10.00%</td>
+                        </tr>
+                        <tr>
+                            <td>26</td>
+                            <td>3,150,000</td>
+                            <td>49,000</td>
+                            <td>39,500</td>
+                            <td>9,500</td>
+                            <td>3,100,000</td>
+                            <td>9.50%</td>
+                        </tr>
+                        <tr>
+                            <td>27</td>
+                            <td>3,100,000</td>
+                            <td>48,500</td>
+                            <td>39,000</td>
+                            <td>9,000</td>
+                            <td>3,050,000</td>
+                            <td>9.00%</td>
+                        </tr>
+                        <tr>
+                            <td>28</td>
+                            <td>3,050,000</td>
+                            <td>48,000</td>
+                            <td>38,500</td>
+                            <td>8,500</td>
+                            <td>3,000,000</td>
+                            <td>8.50%</td>
+                        </tr>
+                        <tr>
+                            <td>29</td>
+                            <td>3,000,000</td>
+                            <td>47,500</td>
+                            <td>38,000</td>
+                            <td>8,000</td>
+                            <td>2,950,000</td>
+                            <td>8.00%</td>
+                        </tr>
+                        <tr>
+                            <td>30</td>
+                            <td>2,950,000</td>
+                            <td>47,000</td>
+                            <td>37,500</td>
+                            <td>7,500</td>
+                            <td>2,900,000</td>
+                            <td>7.50%</td>
+                        </tr>
+                        <tr>
+                            <td>31</td>
+                            <td>2,900,000</td>
+                            <td>46,500</td>
+                            <td>37,000</td>
+                            <td>7,000</td>
+                            <td>2,850,000</td>
+                            <td>7.00%</td>
+                        </tr>
+                        <tr>
+                            <td>32</td>
+                            <td>2,850,000</td>
+                            <td>46,000</td>
+                            <td>36,500</td>
+                            <td>6,500</td>
+                            <td>2,800,000</td>
+                            <td>6.50%</td>
+                        </tr>
+                        <tr>
+                            <td>33</td>
+                            <td>2,800,000</td>
+                            <td>45,500</td>
+                            <td>36,000</td>
+                            <td>6,000</td>
+                            <td>2,750,000</td>
+                            <td>6.00%</td>
+                        </tr>
+                        <tr>
+                            <td>34</td>
+                            <td>2,750,000</td>
+                            <td>45,000</td>
+                            <td>35,500</td>
+                            <td>5,500</td>
+                            <td>2,700,000</td>
+                            <td>5.50%</td>
+                        </tr>
+                        <tr>
+                            <td>35</td>
+                            <td>2,700,000</td>
+                            <td>44,500</td>
+                            <td>35,000</td>
+                            <td>5,000</td>
+                            <td>2,650,000</td>
+                            <td>5.00%</td>
+                        </tr>
+                        <tr>
+                            <td>36</td>
+                            <td>2,650,000</td>
+                            <td>44,000</td>
+                            <td>34,500</td>
+                            <td>4,500</td>
+                            <td>2,600,000</td>
+                            <td>4.50%</td>
+                        </tr>
+                        <tr>
+                            <td>37</td>
+                            <td>2,600,000</td>
+                            <td>43,500</td>
+                            <td>34,000</td>
+                            <td>4,000</td>
+                            <td>2,550,000</td>
+                            <td>4.00%</td>
+                        </tr>
+                        <tr>
+                            <td>38</td>
+                            <td>2,550,000</td>
+                            <td>43,000</td>
+                            <td>33,500</td>
+                            <td>3,500</td>
+                            <td>2,500,000</td>
+                            <td>3.50%</td>
+                        </tr>
+                        <tr>
+                            <td>39</td>
+                            <td>2,500,000</td>
+                            <td>42,500</td>
+                            <td>33,000</td>
+                            <td>3,000</td>
+                            <td>2,450,000</td>
+                            <td>3.00%</td>
+                        </tr>
+                        <tr>
+                            <td>40</td>
+                            <td>2,450,000</td>
+                            <td>42,000</td>
+                            <td>32,500</td>
+                            <td>2,500</td>
+                            <td>2,400,000</td>
+                            <td>2.50%</td>
+                        </tr>
+                        <tr>
+                            <td>41</td>
+                            <td>2,400,000</td>
+                            <td>41,500</td>
+                            <td>32,000</td>
+                            <td>2,000</td>
+                            <td>2,350,000</td>
+                            <td>2.00%</td>
+                        </tr>
+                        <tr>
+                            <td>42</td>
+                            <td>2,350,000</td>
+                            <td>41,000</td>
+                            <td>31,500</td>
+                            <td>1,500</td>
+                            <td>2,300,000</td>
+                            <td>1.50%</td>
+                        </tr>
+                        <tr>
+                            <td>43</td>
+                            <td>2,300,000</td>
+                            <td>40,500</td>
+                            <td>31,000</td>
+                            <td>1,000</td>
+                            <td>2,250,000</td>
+                            <td>1.00%</td>
+                        </tr>
+
+
+                        <!-- Continue adding the rest of the rows in the same format -->
+
+
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+
+
+
+            <h4>Benefits of the Reducing Balance Method</h4>
+            <p>✅ Lower interest burden over time</p>
+            <p>✅ Higher proportion of principal repayment as tenure progresses</p>
+            <p>✅ Ideal for long-term loans</p>
+
+            <hr>
+
+            <h4>How Does Prepayment Affect You?</h4>
+            <p>Prepayment means repaying a part of the loan before the scheduled EMI payments. This can be done in two
+                ways:</p>
+            <p><strong>Partial Prepayment</strong> – Paying a lump sum amount to reduce the outstanding principal.</p>
+            <p><strong>Full Prepayment</strong> – Paying off the entire loan before the tenure ends.</p>
+
+            <hr>
+
+            <h4>Advantages of Prepayment</h4>
+            <p>✔ Reduces total interest paid</p>
+            <p>✔ Shortens loan tenure</p>
+            <p>✔ Provides financial freedom sooner</p>
+
+            <hr>
+
+            <h4>Disadvantages of Prepayment</h4>
+            <p>✔ Some banks charge prepayment penalties</p>
+            <p>✔ Can impact short-term liquidity</p>
+
+            <hr>
+
+            <h4>How Will Interest Rate Movements Affect You?</h4>
+            <p>Loans can have two types of interest rates:</p>
+            <p><strong>Fixed Interest Rate</strong> – EMI remains the same throughout the tenure.</p>
+            <p><strong>Floating Interest Rate</strong> – EMI changes based on market interest rates.</p>
+
+            <hr>
+
+            <h4>Factors Affecting Interest Rates</h4>
+            <p>📌 Repo Rate Changes: When the central bank increases or decreases the repo rate, interest rates on loans
+                fluctuate.</p>
+            <p>📌 Inflation: Higher inflation leads to higher interest rates.</p>
+            <p>📌 Credit Score: A higher credit score means lower interest rates.</p>
+
+            <hr>
+
+            <h4>Fixed vs. Floating Interest Rates</h4>
+            <p><strong>Feature:</strong> Fixed Rate | Floating Rate</p>
+            <p><strong>EMI Stability:</strong> Constant | Changes over time</p>
+            <p><strong>Interest Rate:</strong> Higher | Lower initially</p>
+            <p><strong>Beneficial When:</strong> Rates are expected to rise | Rates are expected to fall</p>
+
+            <hr>
+
+            <h4>Tips to Manage Your Loan Effectively</h4>
+            <p>1️⃣ Choose the Right Tenure – Shorter tenure saves interest, but increases EMI.</p>
+            <p>2️⃣ Use an EMI Calculator – Plan repayments effectively.</p>
+            <p>3️⃣ Make Prepayments When Possible – Reduce interest burden.</p>
+            <p>4️⃣ Maintain a Good Credit Score – Helps in negotiating better interest rates.</p>
+            <p>5️⃣ Compare Loan Offers – Different banks offer different rates.</p> 
+        </div>
+    </section>
+ 
+
+    <footer class="text-white py-3">
+        <div class="text-center">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-2 mb-md-0">&copy; 2025 Loan Calculator Website</p>
+                </div>
+                <hr class="d-block d-md-none mb-0">
+                <div class="col-md-6">
+                    <ul class="list-inline mb-0 mt-2 mt-md-0">
+                        <li class="list-inline-item px-4 px-md-2"><a href="privacy-policy.html"
+                                class="text-white text-decoration-none">Privacy Policy</a></li>
+                        <li class="list-inline-item px-4 px-md-2"><a href="terms.html"
+                                class="text-white text-decoration-none">Terms
+                                & Conditions</a></li>
+                        <li class="list-inline-item px-4 px-md-2"><a href="blog.html"
+                                class="text-white text-decoration-none">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

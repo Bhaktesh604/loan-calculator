@@ -19,11 +19,13 @@ ul,ol{
     margin-left: -15px;
     margin-right: -15px;
 } */
-.container {
+.container2 {
     background-color: #eaedf0;
     border: 1px dotted #000; 
 }
-
+.logo{
+    width: 250px;
+}
 header {
     background-color: #4CAF50;
     padding: 1rem;
