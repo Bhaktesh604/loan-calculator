@@ -151,5 +151,8 @@ footer p{
     .calculator-section{
         padding: 1rem 2rem;
     }
+    .logo{
+        width: 200px;
+    }
    
 }
