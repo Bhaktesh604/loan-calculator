@@ -4,14 +4,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title for SEO -->
+    <title>Top Blogs | Expert Insights and Tips | YourWebsiteName</title>
+
+    <!-- Meta Description for SEO -->
     <meta name="description"
-        content="Explore top 10 blogs covering a wide range of topics with expert insights and tips. Learn the latest trends, guides, and more.">
-    <meta name="keywords" content="top blogs, latest blogs, expert blogs, blog articles, informative blogs, blog posts">
+        content="Explore the top 10 blogs covering a wide range of topics with expert insights and tips. Stay updated with the latest trends, guides, and informative blog posts.">
+
+    <!-- Meta Keywords for SEO -->
+    <meta name="keywords"
+        content="top blogs, latest blogs, expert blogs, blog articles, informative blogs, blog posts, blog trends, best blogs">
+
+    <!-- Meta Author for SEO -->
     <meta name="author" content="Your Name">
-    <title>Top 10 Blogs | Expert Insights and Tips</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Open Graph Meta Tags for Social Media Sharing -->
+    <meta property="og:title" content="Top Blogs | Expert Insights and Tips | YourWebsiteName">
+    <meta property="og:description"
+        content="Explore the top 10 blogs covering a wide range of topics with expert insights and tips. Stay updated with the latest trends, guides, and informative blog posts.">
+    <meta property="og:image" content="img/og-image.jpg">
+    <!-- Use an optimized image for better visibility when shared on social media -->
+    <meta property="og:url" content="https://www.yourwebsite.com/top-blogs">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Top Blogs | Expert Insights and Tips | YourWebsiteName">
+    <meta name="twitter:description"
+        content="Explore the top 10 blogs covering a wide range of topics with expert insights and tips. Stay updated with the latest trends, guides, and informative blog posts.">
+    <meta name="twitter:image" content="img/og-image.jpg">
+
+    <!-- Favicon for the Website -->
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+
+    <!-- Canonical Link to avoid duplicate content -->
+    <link rel="canonical" href="https://www.yourwebsite.com/top-blogs">
+
+    <!-- Structured Data for SEO (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Blog",
+      "name": "Top Blogs | Expert Insights and Tips",
+      "url": "https://www.yourwebsite.com/top-blogs",
+      "description": "Explore the top 10 blogs covering a wide range of topics with expert insights and tips. Stay updated with the latest trends, guides, and informative blog posts.",
+      "author": {
+        "@type": "Organization",
+        "name": "YourWebsiteName"
+      },
+      "image": "https://www.yourwebsite.com/img/og-image.jpg"
+    }
+    </script>
+ 
+    
+    <!-- Technical SEO: Remove Bootstrap CSS, add custom optimized styles -->
+    <link rel="stylesheet" href="css/style.css"> <!-- Your optimized custom styles -->
+    <script src="js/script.js"></script> <!-- Your custom JavaScript -->
+
+    <!-- Load External Libraries Asynchronously for Performance -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" async></script>
+
+    <!-- Image Optimization for SEO -->
+    <meta property="og:image" content="img/optimized-image.jpg"> <!-- Use optimized images for performance -->
+
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"></script>
@@ -32,7 +86,8 @@
                     <li class="nav-item"><a class="nav-link" href="personal-loan.html">Personal Loan</a></li>
                     <li class="nav-item"><a class="nav-link" href="car-loan.html">Car Loan</a></li>
                     <li class="nav-item"><a class="nav-link" href="loan-emi-calculation-work.html">How It Work</a></li>
-                    <li class="nav-item"><a class="nav-link" href="diamond-calculation.html">Diamond Calculation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="diamondpricecalculator.html">Diamond Calculation</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
                 </ul>
             </div>
@@ -45,7 +100,7 @@
             <div class="col-md-4">
                 <div class="blog-card">
                     <div class="blog-image">
-                        <img src="image/blog/interest-rate-impact.jpg" alt="Interest Rate EMI Impact" />
+                        <img src="img/blog/loan-information.jpg" alt="Interest Rate EMI Impact" />
                     </div>
                     <div class="p-3">
                         <span class="blog-tag">Loan Information</span>
@@ -56,11 +111,11 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-md-4">
                 <div class="blog-card">
                     <div class="blog-image">
-                        <img src="image/blog/home-loan.jpg" alt="Home Loan EMI Calculator" />
+                        <img src="img/blog/home-loans.jpg" alt="Home Loan EMI Calculator" />
                     </div>
                     <div class="p-3">
                         <span class="blog-tag">Home Loans</span>
@@ -77,7 +132,7 @@
             <div class="col-md-4">
                 <div class="blog-card">
                     <div class="blog-image">
-                        <img src="image/blog/loan-benefits.jpg" alt="Benefits of EMI Calculator" />
+                        <img src="img/blog/financial-advice.jpg" alt="Benefits of EMI Calculator" />
                     </div>
                     <div class="p-3">
                         <span class="blog-tag">Financial Advice</span>
@@ -92,7 +147,7 @@
             <div class="col-md-4">
                 <div class="blog-card">
                     <div class="blog-image">
-                        <img src="image/blog/emi-calculator.jpg" alt="Loan EMI Calculator" />
+                        <img src="img/blog/financial-tools.jpg" alt="Loan EMI Calculator" />
                     </div>
                     <div class="p-3">
                         <span class="blog-tag">Financial Tools</span>

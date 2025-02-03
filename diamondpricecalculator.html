@@ -1,81 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diamond Price Calculator</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <!-- Title -->
+    <title>Diamond Calculator | Diamond Price Estimation | All Type Calculator</title>
+
+    <!-- Meta Description for SEO -->
+    <meta name="description"
+        content="Estimate the price of diamonds using our Diamond Calculator. Get accurate diamond price calculations based on weight, clarity, color, and other factors.">
+    <meta name="keywords"
+        content="diamond calculator, diamond price calculator, diamond weight, diamond price estimation, diamond value, calculate diamond price">
+
+    <!-- Meta Author -->
+    <meta name="author" content="YourWebsiteName">
+
+    <!-- Open Graph Meta Tags for Social Media Sharing -->
+    <meta property="og:title" content="Diamond Calculator | Diamond Price Estimation | All Type Calculator">
+    <meta property="og:description"
+        content="Estimate the price of diamonds using our Diamond Calculator. Get accurate diamond price calculations based on weight, clarity, color, and other factors.">
+    <meta property="og:image" content="img/og-image.jpg">
+    <meta property="og:url" content="https://www.yourwebsite.com/diamond-calculator">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Diamond Calculator | Diamond Price Estimation | All Type Calculator">
+    <meta name="twitter:description"
+        content="Estimate the price of diamonds using our Diamond Calculator. Get accurate diamond price calculations based on weight, clarity, color, and other factors.">
+    <meta name="twitter:image" content="img/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://www.yourwebsite.com/diamond-calculator">
+
+    <!-- Schema.org Structured Data for SEO -->
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebPage",
+  "name": "Diamond Calculator",
+  "url": "https://www.yourwebsite.com/diamond-calculator",
+  "description": "Estimate the price of diamonds using our Diamond Calculator. Get accurate diamond price calculations based on weight, clarity, color, and other factors.",
+  "author": {
+    "@type": "Organization",
+    "name": "YourWebsiteName"
+  }
+}
+</script>
+
+    <!-- Technical SEO for Performance & Compatibility -->
+    <!-- Remove unnecessary Bootstrap CSS & JS (done as per your request) -->
+
+    <!-- Add Custom Stylesheets & JS for Optimization -->
+    <link rel="stylesheet" href="css/style.css"> <!-- Your optimized custom styles -->
+    <script src="js/script.js"></script> <!-- Your custom JavaScript --> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"></script>
+
+    <!-- Load External Libraries Asynchronously for Performance -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" async></script>
+
+    <!-- Image Optimization for SEO -->
+    <meta property="og:image" content="img/optimized-image.jpg"> <!-- Use optimized images -->
+
     <style>
-        .shape-img { width: 100px; height: 100px; }
+        .shape-img {
+            width: 100px;
+            height: 100px;
+        }
     </style>
 </head>
-<body class="container mt-5">
-    <h2 class="text-center">Diamond Price Calculator</h2>
-    <div class="row mt-4">
-        
-        <!-- Shape Selection -->
-        <div class="col-md-4">
-            <label for="shape" class="form-label">Select Shape:</label>
-            <select id="shape" class="form-select" onchange="updateShapeImage()">
-                <option value="round" data-img="round.png">Round</option>
-                <option value="princess" data-img="princess.png">Princess</option>
-                <option value="emerald" data-img="emerald.png">Emerald</option>
-                <option value="oval" data-img="oval.png">Oval</option>
-                <option value="marquise" data-img="marquise.png">Marquise</option>
-                <option value="pear" data-img="pear.png">Pear</option>
-                <option value="heart" data-img="heart.png">Heart</option>
-                <option value="cushion" data-img="cushion.png">Cushion</option>
-            </select>
-            <img id="shape-image" src="round.png" alt="Shape" class="mt-2 shape-img">
+
+<body class="">
+    <header class="">
+        <nav class="navbar navbar-expand-lg navbar-transparent container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/loancheckercalculator.png" alt="" class="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home Loan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="personal-loan.html">Personal Loan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="car-loan.html">Car Loan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="diamondpricecalculator.html">Diamond Calculation</a>
+                    <li class="nav-item"><a class="nav-link" href="loan-emi-calculation-work.html">How It Work</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <section class="container container2 my-4 p-5">
+
+        <h2 class="text-center">Diamond Price Calculator</h2>
+        <div class="row mt-4">
+
+            <!-- Shape Selection -->
+            <div class="col-md-4">
+                <label for="shape" class="form-label">Select Shape:</label>
+                <select id="shape" class="form-select" onchange="updateShapeImage()">
+                    <option value="round" data-img="round.png">Round</option>
+                    <option value="princess" data-img="princess.png">Princess</option>
+                    <option value="emerald" data-img="emerald.png">Emerald</option>
+                    <option value="oval" data-img="oval.png">Oval</option>
+                    <option value="marquise" data-img="marquise.png">Marquise</option>
+                    <option value="pear" data-img="pear.png">Pear</option>
+                    <option value="heart" data-img="heart.png">Heart</option>
+                    <option value="cushion" data-img="cushion.png">Cushion</option>
+                </select>
+                <img id="shape-image" src="round.png" alt="Shape" class="mt-2 shape-img">
+            </div>
+
+            <!-- Color Selection -->
+            <div class="col-md-4">
+                <label for="color" class="form-label">Select Color:</label>
+                <select id="color" class="form-select">
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="G">G</option>
+                    <option value="H">H</option>
+                    <option value="I">I</option>
+                    <option value="J">J</option>
+                </select>
+            </div>
+
+            <!-- Clarity Selection -->
+            <div class="col-md-4">
+                <label for="clarity" class="form-label">Select Clarity:</label>
+                <select id="clarity" class="form-select">
+                    <option value="FL">FL</option>
+                    <option value="IF">IF</option>
+                    <option value="VVS1">VVS1</option>
+                    <option value="VVS2">VVS2</option>
+                    <option value="VS1">VS1</option>
+                    <option value="VS2">VS2</option>
+                    <option value="SI1">SI1</option>
+                    <option value="SI2">SI2</option>
+                    <option value="I1">I1</option>
+                </select>
+            </div>
         </div>
-        
-        <!-- Color Selection -->
-        <div class="col-md-4">
-            <label for="color" class="form-label">Select Color:</label>
-            <select id="color" class="form-select">
-                <option value="D">D</option>
-                <option value="E">E</option>
-                <option value="F">F</option>
-                <option value="G">G</option>
-                <option value="H">H</option>
-                <option value="I">I</option>
-                <option value="J">J</option>
-            </select>
+
+        <!-- Weight Input -->
+        <div class="mt-3">
+            <label for="weight" class="form-label">Enter Weight (Carat):</label>
+            <input type="number" id="weight" class="form-control" placeholder="Enter weight">
         </div>
-        
-        <!-- Clarity Selection -->
-        <div class="col-md-4">
-            <label for="clarity" class="form-label">Select Clarity:</label>
-            <select id="clarity" class="form-select">
-                <option value="FL">FL</option>
-                <option value="IF">IF</option>
-                <option value="VVS1">VVS1</option>
-                <option value="VVS2">VVS2</option>
-                <option value="VS1">VS1</option>
-                <option value="VS2">VS2</option>
-                <option value="SI1">SI1</option>
-                <option value="SI2">SI2</option>
-                <option value="I1">I1</option>
-            </select>
+
+        <!-- Calculate Button -->
+        <div class="mt-3">
+            <button class="btn btn-primary" onclick="calculatePrice()">Calculate Price</button>
         </div>
-    </div>
-    
-    <!-- Weight Input -->
-    <div class="mt-3">
-        <label for="weight" class="form-label">Enter Weight (Carat):</label>
-        <input type="number" id="weight" class="form-control" placeholder="Enter weight">
-    </div>
-    
-    <!-- Calculate Button -->
-    <div class="mt-3">
-        <button class="btn btn-primary" onclick="calculatePrice()">Calculate Price</button>
-    </div>
-    
-    <!-- Result -->
-    <div class="mt-3">
-        <h4>Estimated Price: <span id="price">-</span></h4>
-    </div>
-    
+
+        <!-- Result -->
+        <div class="mt-3">
+            <h5>Estimated Price: <span id="price">-</span></h5>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <h5>Understanding Diamond Value</h5>
+            <p>It's universally known that the value of diamonds is constantly changing over time. However, determining
+                the true value of a diamond can be challenging, especially for those who are not familiar with the
+                diamond industry. Fortunately, our online Diamond Price Calculator™️ has made it easy to calculate the
+                value of a diamond before you buy or sell.</p>
+
+            <hr>
+            <h4>Understanding Diamond Cuts</h4>
+            <p>The first of the '4Cs' in diamonds is the 'cut,' which refers to both the shape and quality of the
+                diamond’s cut. To determine the price of a diamond, we need to identify its shape: is it round
+                brilliant, princess, oval, or another cut? While identifying the shape is easy, assessing the cut
+                quality—how well the diamond has been proportioned and polished—requires expert evaluation. Proper cut
+                proportions enhance a diamond’s brilliance and fire.</p>
+
+            <div class="diamond-cuts">
+                <img src="round.png" alt="Round Brilliant">
+                <img src="princess.png" alt="Princess">
+                <img src="oval.png" alt="Oval">
+                <img src="cushion.png" alt="Cushion">
+                <img src="pear.png" alt="Pear">
+                <img src="marquise.png" alt="Marquise">
+                <img src="heart.png" alt="Heart">
+                <img src="emerald.png" alt="Emerald">
+            </div>
+
+            <p>Among these cuts, the round brilliant is the most popular and often the most expensive due to its ability
+                to reflect maximum light. Other cuts, known as ‘fancy cuts,’ may be less in demand but offer unique
+                styles. Since the diamond market is influenced by trends and rarity, the pricing of each cut varies
+                accordingly.</p>
+            <hr>
+            <h5>How Our Diamond Price Calculator Works</h5>
+            <p>Our online diamond price calculator uses a combination of data from the diamond market and the unique
+                characteristics of your diamond to estimate its value. Discover how you can get the best value for a
+                diamond, whether you are looking to buy a diamond for an engagement ring or selling a diamond that you
+                own.</p>
+
+            <hr>
+
+            <h5>Diamond Price Calculator™️</h5>
+            <p>Published and relied on since 2005, Luxe Diamonds' Diamond Price Calculator™️ has helped those seeking to
+                buy or sell loose diamonds worldwide over 9.5 million times.</p>
+
+            <hr>
+
+            <p>There's no catch, no email sign-up form, no 3-day free trial purchase; the diamond price calculator is
+                free and easy to use with 24/7 access! The real-time cost value system provides immediate feedback with
+                four simple diamond criteria: Shape, Carat, Color, and Clarity. For a more accurate diamond price, you
+                can also submit additional details, including the diamond's graded proportion and its associating
+                laboratory (e.g., GIA, EGS, etc.). You can find this information on the diamond's certification report
+                or appraisal.</p>
+
+            <p>Once you've entered your diamond's characteristics, our diamond price calculator will use a complex
+                algorithm to estimate its wholesale value. This algorithm takes into account factors such as the current
+                market demand for diamonds, the diamond's rarity, and the quality of its cut.</p>
+
+            <p><strong>Note:</strong> The calculator does not determine the value of synthetic lab-grown diamonds as
+                they do not have a resale value.</p>
+
+            <hr>
+
+            <h5>Compare Diamond Prices - Buying or Selling A Diamond</h5>
+            <p>With the estimated value of your diamond, you can make an informed decision about whether to buy or sell.
+                If you're looking to sell your diamond, the estimate can help you set a fair price. If you're in the
+                market to buy a diamond, the estimate can help you determine if the asking price is reasonable. Utilize
+                our Diamond Price Calculator™️ today and see how it can help you make informed decisions about your
+                future diamond investments.</p>
+
+            <p>Compare your results when buying or selling a loose diamond to determine if jeweler's offers are
+                reasonable. If your jeweler is not willing to budge on their cost, there is potential to buy/sell your
+                diamond at the right value with Luxe Diamonds!</p>
+
+            <hr>
+
+            <h5>Have Questions About Diamond Pricing?</h5>
+            <p>Are you in the market to purchase a diamond and have questions about how much you should spend? You may
+                benefit from a 15-minute phone call with one of our pricing experts. Contact Luxe Diamonds for your
+                diamond price inquiries at (703) 536-3600.</p>
+
+            <hr>
+
+            <h5>
+                <a href="contact-us.html">Contact Us</a>
+            </h5>
+            <p>For more information, reach out to our team today!</p>
+
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <hr>
+            <div class="row">
+                <div class="col-md-8">
+
+                    <h4>Diamond Carat Weight</h4>
+                    <p>The second key factor in a diamond’s value is its carat weight. A carat represents the weight of
+                        the
+                        diamond, where 1 carat equals 0.20 grams. While larger diamonds tend to have a higher price, the
+                        price
+                        does not increase in direct proportion to weight. Instead, price brackets exist for different
+                        weight
+                        ranges, meaning a 1-carat diamond can cost significantly more than a 0.90-carat diamond due to
+                        market
+                        pricing grids.</p>
+
+                    <p>Jewelers use the Rapaport pricing list to determine diamond value based on carat weight, with
+                        pricing
+                        shifting at specific carat brackets. For example, a 0.99-carat diamond and a 1.00-carat diamond
+                        may
+                        have
+                        a significant price difference despite only a 0.01-carat variation.</p>
+
+                    <p>For buyers and sellers, understanding carat weight is crucial in making informed purchasing or
+                        selling
+                        decisions. Our price estimator helps determine diamond values within weight categories ranging
+                        from
+                        0.20
+                        to 5.99 carats.</p>
+                </div>
+                <div class="col-md-4">
+
+                    <img src="img/balance-carat.jpg" alt="Diamond Scale">
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- <div class="section-gap"></div> -->
+
+    <footer class="text-white py-3">
+        <div class="text-center">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-2 mb-md-0">&copy; 2025 Loan Calculator Website</p>
+                </div>
+                <hr class="d-block d-md-none mb-0">
+                <div class="col-md-6">
+                    <ul class="list-inline mb-0 mt-2 mt-md-0">
+                        <li class="list-inline-item px-4 px-md-2"><a href="privacy-policy.html"
+                                class="text-white text-decoration-none">Privacy Policy</a></li>
+                        <li class="list-inline-item px-4 px-md-2"><a href=" terms&conditions.html"
+                                class="text-white text-decoration-none">Terms
+                                & Conditions</a></li>
+                        <li class="list-inline-item px-4 px-md-2"><a href="blog.html"
+                                class="text-white text-decoration-none">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
     <script>
         function updateShapeImage() {
             const shapeSelect = document.getElementById("shape");
@@ -86,10 +324,11 @@
 
         function calculatePrice() {
             const weight = parseFloat(document.getElementById("weight").value) || 0;
-            const basePricePerCarat = 5000; 
+            const basePricePerCarat = 5000;
             const totalPrice = weight * basePricePerCarat;
             document.getElementById("price").innerText = `$${totalPrice.toFixed(2)}`;
         }
     </script>
 </body>
+
 </html>
